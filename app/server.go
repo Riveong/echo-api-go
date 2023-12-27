@@ -3,6 +3,7 @@ package main
 import(
 	"net/http"
 	"github.com/labstack/echo/v4"
+	n "app/names"
 )
 
 
@@ -10,10 +11,10 @@ import(
 func main(){
 	
 	e := echo.New()
-	name := []string{"John", "Andreas", "Doe", "Peter", "Griffin", "Brian", "Stewie"}
+	
 
 	e.GET("/", func(c echo.Context) error{
-		return c.JSON(http.StatusOK, map[string][]string{"names": name})
+		return c.JSON(http.StatusOK, map[string][]string{"names": n.persons})
 	})
 	e.Logger.Fatal(e.Start(":1323"))
 }
